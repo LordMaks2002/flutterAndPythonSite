@@ -3,8 +3,7 @@ import 'package:http/http.dart' as http;
 import '../models/todo.dart';
 
 class ApiService {
-  final String baseUrl = 'http://localhost:5000'; // ДЛЯ Flutter Web (Chrome)
-  // Для iOS симулятора або реального пристрою — заміни на IP комп'ютера, напр. http://192.168.1.100:5000
+  final String baseUrl = 'http://localhost:5000';
 
   Future<List<Todo>> getTodos() async {
     final response = await http.get(Uri.parse('$baseUrl/todos'));

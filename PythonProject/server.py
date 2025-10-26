@@ -6,16 +6,14 @@ import uuid
 
 app = FastAPI()
 
-# НАЛАШТУВАННЯ CORS — ОБОВ'ЯЗКОВО!
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Для розробки. У продакшені — конкретний домен
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],  # Явно додай OPTIONS!
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
-# === Моделі ===
 class TodoCreate(BaseModel):
     title: str
 
@@ -27,10 +25,10 @@ class Todo(BaseModel):
     title: str
     completed: bool = False
 
-# === Дані ===
+
 todos: List[Todo] = []
 
-# === Ендпоінти ===
+
 @app.get("/todos", response_model=List[Todo])
 def get_todos():
     return todos
